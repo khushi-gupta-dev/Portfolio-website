@@ -1,6 +1,6 @@
 const FadeIn = () => {
     return (
-        <div></div>
+        <div>FadeIn</div>
     )
 }
 

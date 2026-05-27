@@ -1,10 +1,10 @@
-
+import Navbar from "./components/layout/Navbar"
 
 
 const App = () => {
   return (
-    <div className="text-3xl">
-      App
+    <div className="min-h-screen bg-black">
+      <Navbar />
     </div>
   )
 }
