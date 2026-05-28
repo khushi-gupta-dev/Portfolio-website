@@ -1,12 +1,17 @@
-import Navbar from "./components/layout/Navbar"
-
+import Navbar from "./components/layout/Navbar";
+import Hero from "./components/sections/Hero";
 
 const App = () => {
-  return (
-    <div className="min-h-screen bg-black">
+  return ( 
+    <div className="min-h-screen bg-black pb-[100vh]">
       <Navbar />
-    </div>
-  )
-}
 
-export default App
+      <main>
+        <Hero />
+        <About />
+      </main>
+    </div>
+  );
+};
+
+export default App;
