@@ -97,5 +97,13 @@ export const skills = [
         level: 'Expert',
         experience: '1+ years',
     },
+    {
+        id: 14,
+        name:'Hopscotch',
+        icon: 'Zap',
+        level: 'Advanced',
+        experience: '1+ years',
+    },
+   
 
 ]
