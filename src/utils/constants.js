@@ -29,7 +29,7 @@ export const STATS = [
 
 export const ABOUT_STATS = [
     { label: "Happy Clients", value: "3+" },
-    { label: "Code Commits", value: "5+" },
+    { label: "Code Commits", value: "100+" },
     { label: "Problem Solved", value: "200+" },
 ];
 

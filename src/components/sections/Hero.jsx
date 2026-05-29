@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { ChevronDown, Star } from "lucide-react";
 import {
   SiReact,
@@ -77,7 +77,7 @@ const Hero = () => {
           {/* {right column - developer image} */}
           <FadeIn delay={200}>
             <div className="relative">
-              <div className="relative overflow-hidden rounded-2xl aspect-4/5 max-w-[400px] ml-auto group">
+              <div className="relative overflow-hidden rounded-2xl aspect-4/5 max-w-[360px] ml-auto group">
                 <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-0">
                   <div className="absolute inset-[-2px] bg-linear-to-r from-primary/20 via-primary/10 to-primary animate-spin-slow rounded-2xl"></div>
                 </div>

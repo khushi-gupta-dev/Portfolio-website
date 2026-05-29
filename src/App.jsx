@@ -9,6 +9,7 @@ const App = () => {
       <main>
         <Hero />
         <About />
+        <Skills />
       </main>
     </div>
   );
