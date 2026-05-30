@@ -1,7 +1,7 @@
 export const PERSONAL_INFO = {
     name: "Khushi Gupta",
     title: "Full Stack Developer ",
-    email: "khushi.gupta28.dev@gmail",
+    email: "khushi.gupta28.dev@gmail.com",
     location: "India",
     tagline: "Passionate about crafting seamless user experiences and efficient code.",
     resume: "/resume.pdf",
