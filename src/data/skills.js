@@ -98,7 +98,7 @@ export const skills = [
         experience: '1+ years',
     },
     {
-        id: 14,
+        id: 15,
         name:'Hopscotch',
         icon: 'Zap',
         level: 'Advanced',
