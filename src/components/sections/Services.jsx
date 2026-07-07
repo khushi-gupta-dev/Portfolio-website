@@ -1,4 +1,4 @@
-import React from "react";
+
 import { services } from "../../data/services";
 import * as Icons from "lucide-react";
 import { Wrench } from "lucide-react";
@@ -49,7 +49,7 @@ const Services = () => {
             const IconComponent = Icons[service.icon] || Icons.Code2;
             return (
               <FadeIn key={service.id} delay={100 + index * 100}>
-                <div className="group relative bg-white/5 border border-white/10 rounded-3xl p8 hover:border-primary/30  transition-all duration-300  h-full min-h-[280px] flex flex-col">
+                <div className="group relative bg-white/5 border border-white/10 rounded-3xl p8 hover:border-primary/30  transition-all duration-300  h-full min-h-70 flex flex-col">
                   <div className="mb-6">
                     <div className="w-16 h-16 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center  group-hover:scale-110  transition-transform  duration-300">
                       <IconComponent className="w-8 h-8 text-primary" />
