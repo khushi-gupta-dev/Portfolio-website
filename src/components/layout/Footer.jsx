@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Mail, Mapin, Heart } from "lucide-react"
+import { Mail, MapPin, Heart } from "lucide-react"
 import{FaGithub, FaLinkedin, FaTwitter , FaDribbble } from "react-icons/fa"
 import { PERSONAL_INFO, SOCIAL_LINKS, NAV_LINKS } from '../../utils/constants';
 import { scrollToSection } from '../../hooks/useScrollSpy';
@@ -58,7 +58,7 @@ const Footer = () => {
                                 
                                             <div className="flex items-center gap-3 p-3 bg-white/5 border border-white/10 rounded-xl">
                                     <div className="p-2 bg-primary/10 rounded-lg">
-                                        <Mapin className="w-4 h-4 text-primary " />
+                                        <MapPin className="w-4 h-4 text-primary " />
                                     </div>
 
                                     <span className="text-white/70 text-sm">{PERSONAL_INFO.location}</span>

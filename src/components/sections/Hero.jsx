@@ -32,15 +32,15 @@ const Hero = () => {
             </FadeIn>
             <FadeIn delay={100}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal text-white mb-6 leading-tight">
-                React.js Developer Portfolio
+                Full-Stack Developer Portfolio
               </h1>
             </FadeIn>
 
             <FadeIn delay={200}>
               <p className="text-lg text-white/70 max-w-[550px] mb-8">
-                Building modern , scalable web applications with React,
-                JavaScript, and cutting-edge technologies. Transforming ideas
-                into exceptional digital experiences.
+                Building practical products with React, Node.js, Express.js,
+                MongoDB, and REST APIs while strengthening DSA and core CS
+                fundamentals through continuous learning.
               </p>
             </FadeIn>
 

@@ -2,42 +2,42 @@ export const services = [
   {
     id: 1,
     icon: "Layout",
-    title: "Frontend Development",
+    title: "Full-Stack Web Development",
     description:
-      "Building responsive and performant web applications using React,Next.js , and modern Javascript",
+      "Building end-to-end web applications with modern frontend interfaces and scalable backend APIs.",
   },
   {
     id: 2,
     icon: "Smartphone",
-    title: "Responsive Design",
+    title: "Backend Architecture",
     description:
-      "Creating mobile-first, responsive interfaces that work seamlessly across all devices and platforms",
+      "Designing clean backend structure with middleware layers, validations, and robust error handling.",
     },
     {
         id: 3,
         icon: "Palette",
-        title: "UI/UX Design",
+        title: "Authentication Systems",
         description:
-          "Creating intuitive and engaging user interfaces and experiences that delight users and drive engagement",
+          "Implementing secure authentication and authorization using JWT, Passport.js, and protected routes.",
     },
     {
         id: 4,
         icon: "Code2",
-        title: "Custom Components",
+        title: "REST API Development",
         description:
-          "Building reusable and maintainable custom components for modern web applications",
+          "Developing modular and maintainable RESTful APIs for real-world full-stack applications.",
       
     },
     {
         id: 5,
         icon: "Zap",
-        title: "Performance Optimization",
-        description: "Optimizing web applications for speed and efficiency to provide the best possible user experience",
+        title: "Database Design",
+        description: "Working with MongoDB and MySQL using Mongoose and Sequelize for efficient data modeling.",
     },
     {
         id: 6,
         icon: "Server",
-        title: "Backend Development",
-        description: "Building scalable and robust backend systems using modern technologies and best practices",
+        title: "Hackathon Product Building",
+        description: "Contributing rapidly in team environments to build impactful, feature-complete products under tight timelines.",
     }
 ];

@@ -74,12 +74,12 @@ const Contact = () => {
             </div>
 
             <h2 className="text-4xl lg:text-5xl font-normal text-white mb-4 ">
-              Let's Work Together
+              Let's Connect
             </h2>
 
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Have a project in mind? Let's discuss how we can bring your ideas
-              to life.
+              Open to internships, collaborative builds, hackathons, and
+              opportunities to contribute to meaningful products.
             </p>
           </div>
         </FadeIn>
@@ -174,9 +174,8 @@ const Contact = () => {
                   Let's Connect
                 </h3>
                 <p className="text-white/60 leading-relaxed">
-                  I'm always open to discussing new projects , creative ideas ,
-                  or opportunities to be part of your visions. Feel free to
-                  reach out !
+                  Phone: 9893752225. I am always open to discussing projects,
+                  technical collaboration, and growth opportunities.
                 </p>
               </div>
 

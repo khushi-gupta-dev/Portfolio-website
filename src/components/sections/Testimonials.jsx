@@ -31,10 +31,10 @@ const Testimonials = () => {
   };
 
   const testimonialStats = [
-    { value: "3x", label: "Faster Delivery" },
-    { value: "95%", label: "Client Satisfaction" },
-    { value: "100%", label: "On-Time Delivery" },
-    { value: "5+", label: "Average Rating" },
+    { value: "National", label: "Hackathon Exposure" },
+    { value: "2", label: "Scholarships" },
+    { value: "Top 10", label: "MP Merit (12th)" },
+    { value: "1", label: "NPM Package Published" },
   ];
 
   return (
@@ -57,12 +57,12 @@ const Testimonials = () => {
             </div>
 
             <h2 className="text-4xl lg:text-5xl font-normal text-white mb-4 max-w-xl mx-auto ">
-              Trusted by forward-thinking teams
+              Achievements & Highlights
             </h2>
 
             <p className="text-lg text-white/60 max-w-xl mx-auto">
-              Exploring clients with design-driven , high-quality solution built
-              for success.
+              A quick snapshot of academics, hackathon participation,
+              scholarships, and leadership journey.
             </p>
           </div>
         </FadeIn>

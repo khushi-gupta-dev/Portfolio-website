@@ -41,7 +41,7 @@ const About = () => {
 
             <FadeIn delay={100}>
               <h2 className="text-4xl lg:text-5xl font-normal text-white leading-tight">
-                Crafting Digital Experiences That Matter
+                Learning Fast, Building Real Products
               </h2>
             </FadeIn>
 
@@ -91,7 +91,7 @@ const About = () => {
 
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold text-white mb-2">Expertise</h3>
-                      <p className="text-sm text-white/70 leading-relaxed">Specialized in building scalable web applications with modern technologies and best practices.</p>
+                      <p className="text-sm text-white/70 leading-relaxed">Focused on full-stack application development, backend architecture, and secure authentication workflows.</p>
                     </div>
                   </div>
                 </div>
@@ -104,7 +104,7 @@ const About = () => {
                     <Sparkles className="w-5 h-5 text-primary" />
                   </div>
                   <h3 className="text-base font-semibold text-white mb-2">Clean Code</h3>
-                  <p className="text-sm text-white/70 leading-relaxed">Writing maintainable, well-documented code that scales.</p>
+                  <p className="text-sm text-white/70 leading-relaxed">Writing maintainable and modular code with clear structure and reusable logic.</p>
                 </div>
               </div>
 
@@ -115,38 +115,34 @@ const About = () => {
                     <Download className="w-5 h-5 text-primary" />
                   </div>
                   <h3 className="text-base font-semibold text-white mb-2">Performance</h3>
-                  <p className="text-sm text-white/70 leading-relaxed">Optimizing for speed and efficiency in every project.</p>
+                  <p className="text-sm text-white/70 leading-relaxed">Building responsive interfaces and efficient API flows for smooth user experience.</p>
                 </div>
               </div>
 
               <div className="col-span-2 relative group">
                 <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-primary-5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
-                <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full">
+                {/* <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full">
                   <div className="grid grid-cols-3 gap-6 text-center">
                     <div>
-                      <div className="text-2xl font-bold text-primary mb-1">100%</div>
-                      <div className="text-xs text-white/60">Client Satisfaction </div>
+                      <div className="text-2xl font-bold text-primary mb-1">8.0</div>
+                      <div className="text-xs text-white/60">CGPA Till Sem 4</div>
                     </div>
                     <div>
                 
 
-                      <div className="text-2xl font-bold text-primary mb-1">24/7</div>
-                      <div className="text-xs text-white/60">Support Available</div>
+                      <div className="text-2xl font-bold text-primary mb-1">5th</div>
+                      <div className="text-xs text-white/60">Current Semester</div>
            
           
                     </div>
                     <div>
-                
-
-        
-
-                      <div className="text-2xl font-bold text-primary mb-1">Fast</div>
-                      <div className="text-xs text-white/60">Delivery Time</div>
+                 <div className="text-2xl font-bold text-primary mb-1">Top 10</div>
+                      <div className="text-xs text-white/60">MP State Merit (12th)</div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
-            </div>
+            </div> 
           </FadeIn>
        
         </div >
@@ -161,7 +157,7 @@ const About = () => {
                 Tech Stack & Expertise
               </h3>
               <p className="text-sm text-white/60">
-                Technologies I work with to build amazing projects
+                Tools and technologies I use to build practical full-stack projects
               </p>
             </div>
 

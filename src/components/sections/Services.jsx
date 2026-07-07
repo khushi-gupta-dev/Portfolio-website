@@ -34,12 +34,12 @@ const Services = () => {
             </div>
 
             <h2 className="text-4xl lg:text-5xl font-normal text-white mb-4 max-w-2xl mx-auto ">
-              Built for innovation, Designed for results .
+              Building practical solutions with modern full-stack tools.
             </h2>
 
             <p className="text-lg text-white/60 max-w-xl mx-auto">
-              Comprehensive solutions to transform your ideas into exceptional
-              digital experiences.
+              Focused capabilities across frontend, backend, authentication,
+              APIs, and database-driven application development.
             </p>
           </div>
         </FadeIn>

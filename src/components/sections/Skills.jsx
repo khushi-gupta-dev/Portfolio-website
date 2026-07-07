@@ -11,21 +11,23 @@ const Skills = () => {
         "Frontend Development": [
             skills.find(s => s.name === "React.js"),
             skills.find(s => s.name === "JavaScript"),
-            skills.find(s => s.name === "TypeScript"),
-            skills.find(s => s.name === "Next.js"),
-            // skills.find(s => s.name === "Tailwind.css"),
-            // skills.find(s => s.name === "Redux"),
+            skills.find(s => s.name === "HTML, CSS, Tailwind, Bootstrap, EJS"),
+            skills.find(s => s.name === "C++"),
         ].filter(Boolean),
         "Backend & APIs": [
             skills.find(s => s.name === "Node.js"),
             skills.find(s => s.name === "REST APIs"),
             skills.find(s => s.name === "Express.js"),
+            skills.find(s => s.name === "MongoDB, MySQL, Mongoose, Sequelize"),
+            skills.find(s => s.name === "JWT, Passport.js, Socket.IO"),
         ].filter(Boolean),
         "Tools & Others": [
             skills.find(s => s.name === "Git & GitHub"),
-            skills.find(s => s.name === "Responsive Design"),
-            skills.find(s => s.name === "Hopscotch"),
-            skills.find(s => s.name === "Vite"),
+            skills.find(s => s.name === "Postman, VS Code, Linux (Basic), Vim (Basic), NPM"),
+            skills.find(s => s.name === "C"),
+            skills.find(s => s.name === "Python (Basic)"),
+            skills.find(s => s.name === "Java (Basic)"),
+            skills.find(s => s.name === "DSA, DBMS, OOP, OS, CN, Software Engineering"),
         ].filter(Boolean),
     };
 
@@ -78,7 +80,7 @@ const Skills = () => {
                             </h2>
 
                             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-                                A Comprehensive overview of my technical skills and proficiency level
+                                A comprehensive overview of my technical skills, core subjects, and project-ready strengths
                             </p>
 
                         </div>

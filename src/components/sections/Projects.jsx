@@ -6,6 +6,9 @@ import {
   Globe,
   Palette,
   Zap,
+  Server,
+  Trophy,
+  Package,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -64,6 +67,9 @@ const Projects = () => {
     "UI Components": Palette,
 
     "Full Stack": Zap,
+    Backend: Server,
+    Hackathon: Trophy,
+    Package: Package,
   };
 
   return (
@@ -87,7 +93,8 @@ const Projects = () => {
             </h2>
 
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Showcasing my best work and achievements.
+              Showcasing my full-stack builds, hackathon solutions, and
+              developer learning projects.
             </p>
           </div>
         </FadeIn>
@@ -115,7 +122,7 @@ const Projects = () => {
                 />
 
                 <div className="relative flex items-center gap-2">
-                  {React.createElement(categoryIcons[category], {
+                  {React.createElement(categoryIcons[category] || Target, {
                     className: "w-4 h-4 ",
                   })}
                   <span className="text-sm">{category}</span>
