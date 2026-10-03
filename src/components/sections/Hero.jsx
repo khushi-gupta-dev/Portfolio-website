@@ -1,5 +1,4 @@
-
-import { ChevronDown, Star } from "lucide-react";
+import { ChevronDown, Star, MapPin } from "lucide-react";
 import {
   SiReact,
   SiNextdotjs,
@@ -11,132 +10,199 @@ import { PERSONAL_INFO, STATS } from "../../utils/constants";
 import { scrollToSection } from "../../hooks/useScrollSpy";
 import FadeIn from "../animations/FadeIn";
 import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
+
+const TECH = [
+  { Icon: SiReact,      label: "React",    color: "#61DAFB" },
+  { Icon: SiNextdotjs,  label: "Next.js",  color: "#1a1628" },
+  { Icon: SiNodedotjs,  label: "Node.js",  color: "#339933" },
+  { Icon: SiTailwindcss,label: "Tailwind", color: "#06B6D4" },
+  { Icon: SiMongodb,    label: "MongoDB",  color: "#47A248" },
+];
+
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#f5f3f0]">
       <RadialGradientBackground variant="hero" />
 
-      {/* {content container} */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-28 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* {left-column-content} */}
-          <div className="text-left">
+          {/* ── Left — text content ── */}
+          <div className="text-left max-w-xl">
+
+            {/* Badge */}
             <FadeIn delay={0}>
-              <div className="inline-flex items-center gap-2.5 px-[18px] py-[11px] mb-8 bg-linear-to-r from-primary/10 via-primary/15 to-primary/20 border border-primary/20 rounded-full">
-                <Star className="w-4 h-4 text-white fill-white" />
-                <span className="text-xs md:text-sm text-white tracking-[1.2px]  ">
-                  {PERSONAL_INFO.title} | Based in {PERSONAL_INFO.location}
-                </span>
+              <div className="section-badge mb-8 w-fit">
+                <Star className="w-3.5 h-3.5" />
+                {PERSONAL_INFO.title}
+                <span className="opacity-50">·</span>
+                <MapPin className="w-3 h-3 opacity-70" />
+                {PERSONAL_INFO.location}
               </div>
             </FadeIn>
-            <FadeIn delay={100}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal text-white mb-6 leading-tight">
-                Full-Stack Developer Portfolio
+
+            {/* Headline */}
+            <FadeIn delay={80}>
+              <h1 className="text-display mb-5">
+                Building real products,{" "}
+                <span
+                  style={{
+                    background: "linear-gradient(135deg, #7c5cbf 0%, #a07dd4 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  one commit at a time.
+                </span>
               </h1>
             </FadeIn>
 
-            <FadeIn delay={200}>
-              <p className="text-lg text-white/70 max-w-[550px] mb-8">
-                Building practical products with React, Node.js, Express.js,
-                MongoDB, and REST APIs while strengthening DSA and core CS
-                fundamentals through continuous learning.
+            {/* Sub-text */}
+            <FadeIn delay={160}>
+              <p className="text-body text-[1.0625rem] mb-9 max-w-[480px]">
+                Full-Stack developer crafting scalable web apps with React,
+                Node.js, Express &amp; MongoDB — driven by clean code and
+                continuous learning.
               </p>
             </FadeIn>
 
-            <FadeIn delay={300}>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="inline-flex items-center gap-0 mb-12 group"
-              >
-                <div className="relative z-10 bg-white text-[#212121] rounded-[17px] px-[26px] py-[13px] text-base font-medium border border-white">
+            {/* CTA */}
+            <FadeIn delay={240}>
+              <div className="flex items-center gap-4 mb-14">
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className="btn-primary"
+                >
                   Get in Touch
-                </div>
-              </button>
+                </button>
+                <button
+                  onClick={() => scrollToSection("projects")}
+                  className="inline-flex items-center gap-2 px-5 py-[0.6875rem] rounded-[0.75rem] border border-[#e2dcd5] text-[#4a4358] text-[0.9375rem] font-semibold hover:border-[#7c5cbf]/40 hover:text-[#7c5cbf] transition-all duration-200"
+                >
+                  View Projects
+                </button>
+              </div>
             </FadeIn>
 
-            <FadeIn delay={400}>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-10 max-w-full">
-                {STATS.map((stat, index) => (
-                  <div
-                    key={index}
-                    className="text-left border-r border-white/50 pr-10 last:border-r-0 "
-                  >
-                    <div className="text-2xl font-normal text-primary mb-[8px] font-mono">
+            {/* Stats row */}
+            <FadeIn delay={320}>
+              <div className="flex flex-wrap gap-x-10 gap-y-4">
+                {STATS.map((stat, i) => (
+                  <div key={i} className="flex flex-col">
+                    <span
+                      className="text-2xl font-bold leading-none mb-1"
+                      style={{ fontFamily: "'Urbanist', sans-serif", color: "#7c5cbf", letterSpacing: "-0.03em" }}
+                    >
                       {stat.value}
-                    </div>
-                    <p className="text-sm text-white leading-snug">
-                      {stat.label}
-                    </p>
+                    </span>
+                    <span className="text-xs font-medium text-[#6b6375] tracking-wide">{stat.label}</span>
                   </div>
                 ))}
               </div>
             </FadeIn>
           </div>
 
-          {/* {right column - developer image} */}
+          {/* ── Right — photo card ── */}
           <FadeIn delay={200}>
-            <div className="relative">
-              <div className="relative overflow-hidden rounded-2xl aspect-4/5 max-w-[360px] ml-auto group">
-                <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-0">
-                  <div className="absolute inset-[-2px] bg-linear-to-r from-primary/20 via-primary/10 to-primary animate-spin-slow rounded-2xl"></div>
-                </div>
+            <div className="flex justify-center lg:justify-end lg:pr-8">
+              <div className="relative animate-drift">
 
-                {/* {image container}   */}
-                <div className="relative z-10 rounded-2xl overflow-hidden m-[1px] h-[calc(100%-2px)]">
-                  <img
-                    src="/developer-portrait2.jpeg"
-                    alt="Developer at work"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                {/* Soft purple glow behind */}
+                <div
+                  className="absolute -inset-8 rounded-[2.5rem] pointer-events-none"
+                  style={{
+                    background: "radial-gradient(circle, rgba(124,92,191,0.10) 0%, transparent 70%)",
+                    filter: "blur(24px)",
+                  }}
+                />
 
-                {/* {technology logos} */}
-                <div className="absolute bottom-6 left-6 z-20">
-                  <FadeIn delay={500}>
-                    <div className="flex items-center gap-4 bg-black/40 backdrop-blur-sm border border-white/10 rounded-full px-6 py-3">
-                      <div className="w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300 ">
-                        <SiReact className="w-full h-full text-primary" />
-                      </div>
+                {/* Photo card — plain white, no glass */}
+                <div
+                  className="relative w-[210px] sm:w-[230px] rounded-[1.75rem] overflow-hidden"
+                  style={{
+                    background: "#ffffff",
+                    border: "1px solid #e2dcd5",
+                    boxShadow: "0 8px 40px rgba(124,92,191,0.12), 0 1px 4px rgba(0,0,0,0.05)",
+                  }}
+                >
+                  {/* Photo — NO overlay, NO gradient */}
+                  <div className="h-[255px] sm:h-[272px] overflow-hidden">
+                    <img
+                      src="/developer-portrait2.jpeg"
+                      alt="Developer portrait"
+                      className="w-full h-full object-cover object-top"
+                      draggable={false}
+                    />
+                  </div>
 
-                      <div className="w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                        <SiNextdotjs className="w-full h-full text-primary" />
-                      </div>
-
-                      <div className="w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                        <SiNodedotjs className="w-full h-full text-primary" />
-                      </div>
-
-                      <div className="w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                        <SiTailwindcss className="w-full h-full text-primary" />
-                      </div>
-
-                      <div className="w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                        <SiNextdotjs className="w-full h-full text-primary" />
-                      </div>
-
-                      <div className="w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                        <SiMongodb className="w-full h-full text-primary" />
-                      </div>
+                  {/* Tech strip */}
+                  <div
+                    className="px-4 py-3.5 border-t border-[#ede9e4]"
+                    style={{ background: "#faf9f7" }}
+                  >
+                    <p className="text-label mb-2.5" style={{ fontSize: "0.65rem" }}>Stack</p>
+                    <div className="flex items-center gap-3">
+                      {TECH.map(({ Icon, label, color }) => (
+                        <Icon
+                          key={label}
+                          className="w-[15px] h-[15px] transition-transform duration-200 hover:scale-125 cursor-default"
+                          style={{ color }}
+                          title={label}
+                        />
+                      ))}
                     </div>
-                  </FadeIn>
+                  </div>
+                </div>
+
+                {/* "Open to work" floating badge */}
+                <div
+                  className="absolute -bottom-3.5 -right-5 flex items-center gap-1.5 px-3 py-2 rounded-xl"
+                  style={{
+                    background: "#ffffff",
+                    border: "1px solid #e2dcd5",
+                    boxShadow: "0 2px 12px rgba(124,92,191,0.10)",
+                  }}
+                >
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span
+                    className="font-semibold text-[#1a1628]"
+                    style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6875rem" }}
+                  >
+                    Open to work
+                  </span>
+                </div>
+
+                {/* "Full-Stack" floating badge */}
+                <div
+                  className="absolute -top-3.5 -left-5 px-3 py-2 rounded-xl"
+                  style={{
+                    background: "#ffffff",
+                    border: "1px solid #e2dcd5",
+                    boxShadow: "0 2px 12px rgba(124,92,191,0.10)",
+                  }}
+                >
+                  <span
+                    className="font-bold text-[#7c5cbf]"
+                    style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6875rem" }}
+                  >
+                    Full-Stack Dev
+                  </span>
                 </div>
               </div>
             </div>
           </FadeIn>
+
         </div>
-          </div>
-          
-          {/* {scroll down indicator} */}
-          
-          <button 
-              onClick={() => scrollToSection("about")}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce ">
+      </div>
 
-              <ChevronDown className="w-8 h-8 text-primary" />
-          </button>
-          
-
+      {/* Scroll cue */}
+      <button
+        onClick={() => scrollToSection("about")}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-60 hover:opacity-100 transition-opacity"
+        aria-label="Scroll down"
+      >
+        <ChevronDown className="w-7 h-7 text-[#7c5cbf]" />
+      </button>
     </section>
   );
 };

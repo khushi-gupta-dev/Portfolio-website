@@ -1,26 +1,15 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
 import { Mail, MapPin, Send, MessageSquare } from "lucide-react";
-
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-
 import { PERSONAL_INFO, SOCIAL_LINKS } from "../../utils/constants";
 import FadeIn from "../animations/FadeIn";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const [status, setStatus] = useState({ type: "", message: "" }); // idle, sending, success, error
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState({ type: "", message: "" });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -33,10 +22,7 @@ const Contact = () => {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      setStatus({
-        type: "error",
-        message: "Please enter a valid email address.",
-      });
+      setStatus({ type: "error", message: "Please enter a valid email address." });
       return;
     }
 
@@ -45,7 +31,6 @@ const Contact = () => {
       message: "Message sent successfully! I'll get back to you soon.",
     });
     setFormData({ name: "", email: "", message: "" });
-
     setTimeout(() => setStatus({ type: "", message: "" }), 5000);
   };
 
@@ -56,43 +41,37 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative py-20 bg-black overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden ">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 opacity-30 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/20 opacity-30 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 opacity-30 rounded-full blur-3xl" />
+    <section id="contact" className="relative py-24 bg-[#f5f3f0] overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#7c5cbf]/05 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#7c5cbf]/05 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <FadeIn delay={0}>
           <div className="text-center mb-16">
-            <div className="inline-flex  items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full mb-6">
-              <MessageSquare className="w-4 h-4 text-primary " />
-              <span className="text-sm text-primary font-medium tracking-wider uppercase ">
-                Get in Touch
-              </span>
+            <div className="section-badge mb-5 mx-auto w-fit">
+              <MessageSquare className="w-3.5 h-3.5" />
+              Get in Touch
             </div>
 
-            <h2 className="text-4xl lg:text-5xl font-normal text-white mb-4 ">
+            <h2 className="text-heading mb-4">
               Let's Connect
             </h2>
 
-            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+            <p className="text-body max-w-2xl mx-auto">
               Open to internships, collaborative builds, hackathons, and
               opportunities to contribute to meaningful products.
             </p>
           </div>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
           <FadeIn delay={100}>
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-8 ">
+            <div className="card p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-white/80 mb-2"
-                  >
+                  <label htmlFor="name" className="block text-sm font-semibold text-[#1a1628] mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>
                     Name
                   </label>
                   <input
@@ -101,16 +80,14 @@ const Contact = () => {
                     id="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40   focus:outline-none focus:ring-2 focus:ring-primary/50  transition-all duration-300"
+                    className="w-full px-4 py-3 bg-[#f5f3f0] border border-[#e2dcd5] rounded-xl text-[#1a1628] placeholder-[#9a9199] focus:outline-none focus:ring-2 focus:ring-[#7c5cbf]/30 focus:border-[#7c5cbf]/50 transition-all duration-300"
                     placeholder="Your Name"
+                    style={{ fontFamily: "'Inter', sans-serif" }}
                   />
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-white/80 mb-2"
-                  >
+                  <label htmlFor="email" className="block text-sm font-semibold text-[#1a1628] mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>
                     Email
                   </label>
                   <input
@@ -119,16 +96,14 @@ const Contact = () => {
                     id="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40   focus:outline-none focus:ring-2 focus:ring-primary/50  transition-all duration-300"
+                    className="w-full px-4 py-3 bg-[#f5f3f0] border border-[#e2dcd5] rounded-xl text-[#1a1628] placeholder-[#9a9199] focus:outline-none focus:ring-2 focus:ring-[#7c5cbf]/30 focus:border-[#7c5cbf]/50 transition-all duration-300"
                     placeholder="Your Email"
+                    style={{ fontFamily: "'Inter', sans-serif" }}
                   />
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-white/80 mb-2"
-                  >
+                  <label htmlFor="message" className="block text-sm font-semibold text-[#1a1628] mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>
                     Message
                   </label>
                   <textarea
@@ -137,26 +112,28 @@ const Contact = () => {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40   focus:outline-none focus:ring-2 focus:ring-primary/50  transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 bg-[#f5f3f0] border border-[#e2dcd5] rounded-xl text-[#1a1628] placeholder-[#9a9199] focus:outline-none focus:ring-2 focus:ring-[#7c5cbf]/30 focus:border-[#7c5cbf]/50 transition-all duration-300 resize-none"
                     placeholder="Tell me about your project"
+                    style={{ fontFamily: "'Inter', sans-serif" }}
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 bg-linear-to-r from-primary/10 to-primary text-white font-medium rounded-xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group"
+                  className="btn-primary w-full justify-center group"
                 >
                   <span>Send Message</span>
-                  <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
 
                 {status.message && (
                   <div
-                    className={`p-4 rounded-xl ${
+                    className={`p-4 rounded-xl text-sm font-medium ${
                       status.type === "success"
-                        ? "bg-green-500/10 border  border-green-500/20  text-green-400"
-                        : "bg-red-500/10 border border-red-500/20 text-red-400"
-                    } `}
+                        ? "bg-[#7c5cbf]/10 border border-[#7c5cbf]/25 text-[#7c5cbf]"
+                        : "bg-red-50 border border-red-200 text-red-600"
+                    }`}
+                    style={{ fontFamily: "'Inter', sans-serif" }}
                   >
                     {status.message}
                   </div>
@@ -165,61 +142,48 @@ const Contact = () => {
             </div>
           </FadeIn>
 
-          {/* {contact info} */}
-
+          {/* Contact info */}
           <FadeIn delay={200}>
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-semibold text-white mb-4">
-                  Let's Connect
-                </h3>
-                <p className="text-white/60 leading-relaxed">
-                  Phone: 9893752225. I am always open to discussing projects,
+                <h3 className="text-subheading mb-3">Reach out directly</h3>
+                <p className="text-body">
+                  Phone: {PERSONAL_INFO.phone || "9893752225"}. I am always open to discussing projects,
                   technical collaboration, and growth opportunities.
                 </p>
               </div>
 
               <div className="space-y-4">
-                <div className="group relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 bg-linear-to-br from-primary/20 to-primary/20 border border-primary/30 rounded-xl ">
-                      <Mail className="w-6 h-6 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm text-white/60 mb-1">Email</p>
-                      <a
-                        href={`mailto:${PERSONAL_INFO.email}`}
-                        className="text-white hover:text-[#A8FF8D]      font-medium  transition-colors "
-                      >
-                        {PERSONAL_INFO.email}
-                      </a>
-                    </div>
+                <div className="card p-5 flex items-start gap-4">
+                  <div className="icon-badge">
+                    <Mail className="w-4 h-4" />
                   </div>
-
-                  <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-primary/0 group-hover:from-primary/5  group-hover:to-primary/5 rounded-2xl    transition-all duration-300 pointer-events-none"></div>
+                  <div className="flex-1">
+                    <p className="text-[0.8rem] font-semibold text-[#6b6375] mb-0.5 uppercase tracking-wide" style={{ fontFamily: "'Inter', sans-serif" }}>Email</p>
+                    <a
+                      href={`mailto:${PERSONAL_INFO.email}`}
+                      className="text-[1.0625rem] font-semibold text-[#1a1628] hover:text-[#7c5cbf] transition-colors"
+                      style={{ fontFamily: "'Inter', sans-serif" }}
+                    >
+                      {PERSONAL_INFO.email}
+                    </a>
+                  </div>
                 </div>
 
-                <div className="group relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 bg-linear-to-br from-primary/20 to-primary/20 border border-primary/30 rounded-xl ">
-                      <MapPin className="w-6 h-6 text-primary" />
-                    </div>
-
-                    <div className="flex-1">
-                      <p className="text-sm text-white/60 mb-1">Location</p>
-                      <p className="text-white font-medium">
-                        {PERSONAL_INFO.location}
-                      </p>
-                    </div>
+                <div className="card p-5 flex items-start gap-4">
+                  <div className="icon-badge">
+                    <MapPin className="w-4 h-4" />
                   </div>
-                  <div />
+                  <div className="flex-1">
+                    <p className="text-[0.8rem] font-semibold text-[#6b6375] mb-0.5 uppercase tracking-wide" style={{ fontFamily: "'Inter', sans-serif" }}>Location</p>
+                    <p className="text-[1.0625rem] font-semibold text-[#1a1628]" style={{ fontFamily: "'Inter', sans-serif" }}>{PERSONAL_INFO.location}</p>
+                  </div>
                 </div>
               </div>
 
               <div>
-                <p className="text-sm text-white/60 mb-4">Connect with me</p>
-
-                <div className="flex gap-4">
+                <p className="text-[0.8rem] font-semibold text-[#6b6375] mb-3 uppercase tracking-wide" style={{ fontFamily: "'Inter', sans-serif" }}>Social Profiles</p>
+                <div className="flex gap-3">
                   {Object.entries(SOCIAL_LINKS)
                     .slice(0, 3)
                     .map(([platform, url]) => {
@@ -230,9 +194,9 @@ const Contact = () => {
                           href={url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-primary/50 hover:scale-110 transition-all duration-300 group"
+                          className="flex items-center justify-center w-12 h-12 bg-white border border-[#e2dcd5] rounded-xl hover:border-[#7c5cbf]/40 hover:text-[#7c5cbf] hover:-translate-y-1 transition-all duration-300 shadow-sm text-[#6b6375]"
                         >
-                          <Icon className="w-6 h-6 text-white/60 group-hover:text-primary transition-colors" />
+                          <Icon className="w-5 h-5" />
                         </a>
                       ) : null;
                     })}
@@ -245,4 +209,5 @@ const Contact = () => {
     </section>
   );
 };
+
 export default Contact;

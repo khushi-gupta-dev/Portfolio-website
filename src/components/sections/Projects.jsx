@@ -25,8 +25,6 @@ const Projects = () => {
       ? projects
       : projects.filter((project) => project.category === activeCategory);
 
-  // reset carousel when category changes
-
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
     setCurrentIndex(0);
@@ -40,32 +38,23 @@ const Projects = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
       const cardWidth = container.offsetWidth / 3;
-
-      container.scrollTo({
-        left: index * cardWidth,
-        behavior: "smooth",
-      });
+      container.scrollTo({ left: index * cardWidth, behavior: "smooth" });
     }
   };
 
   const nextSlide = () => {
     const maxIndex = Math.max(0, filteredProjects.length - 3);
-    const newIndex = Math.min(currentIndex + 1, maxIndex);
-    scrollToIndex(newIndex);
+    scrollToIndex(Math.min(currentIndex + 1, maxIndex));
   };
 
   const prevSlide = () => {
-    const newIndex = Math.max(currentIndex - 1, 0);
-    scrollToIndex(newIndex);
+    scrollToIndex(Math.max(currentIndex - 1, 0));
   };
-
-  // Category icons mappimg
 
   const categoryIcons = {
     All: Target,
     "Web Apps": Globe,
     "UI Components": Palette,
-
     "Full Stack": Zap,
     Backend: Server,
     Hackathon: Trophy,
@@ -73,71 +62,57 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="relative py-20 bg=black overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/3 right-0 w-96 h-96 bg-primary/20 opacity-20 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 left-0 w-96 h-96 bg-primary/20 opacity-20 rounded-full blur-3xl " />
-        <div className="absolute top-1/2 right-1/3 w-96 h-96 bg-primary/10 opacity-20 rounded-full blur-3xl " />
+    <section id="projects" className="relative py-24 bg-[#ede9e4] overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/3 right-0 w-96 h-96 bg-[#7c5cbf]/05 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 left-0 w-96 h-96 bg-[#7c5cbf]/05 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <FadeIn delay={0}>
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full mb-6">
-              <Briefcase className="w-4 h-4 text-primary" />
-              <span className="text-sm text-primary font-medium">My Work</span>
+          <div className="text-center mb-14">
+            <div className="section-badge mb-5 mx-auto w-fit">
+              <Briefcase className="w-3.5 h-3.5" />
+              My Work
             </div>
 
-            <h2 className="text-4xl lg:text-5xl font-normal text-white mb-4">
+            <h2 className="text-heading mb-4">
               Featured Projects
             </h2>
 
-            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+            <p className="text-body max-w-2xl mx-auto">
               Showcasing my full-stack builds, hackathon solutions, and
               developer learning projects.
             </p>
           </div>
         </FadeIn>
 
-        {/* category filter */}
-
+        {/* Category filter */}
         <FadeIn delay={100}>
-          <div className="flex flex-wrap justify-center gap-3 mb-16">
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => handleCategoryChange(category)}
-                className={`group relative px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`group relative px-5 py-2.5 rounded-[0.875rem] font-semibold transition-all duration-300 text-sm ${
                   activeCategory === category
-                    ? "text-white"
-                    : "text-white/60 hover:text-white"
+                    ? "text-white bg-[#7c5cbf] shadow-md shadow-[#7c5cbf]/25 border border-[#7c5cbf]"
+                    : "text-[#6b6375] bg-white border border-[#e2dcd5] hover:border-[#7c5cbf]/40 hover:text-[#7c5cbf]"
                 }`}
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
-                <div
-                  className={`absolute inset-0 rounded-full transition-all duration-300 ${
-                    activeCategory === category
-                      ? "bg-primary/10 opacity-100"
-                      : "bg-white/5 border border-white/10  group-hover:bg-white/10"
-                  }  `}
-                />
-
-                <div className="relative flex items-center gap-2">
+                <div className="flex items-center gap-2">
                   {React.createElement(categoryIcons[category] || Target, {
-                    className: "w-4 h-4 ",
+                    className: "w-3.5 h-3.5",
                   })}
-                  <span className="text-sm">{category}</span>
+                  <span>{category}</span>
                 </div>
-
-                {activeCategory === category && (
-                  <div className="absolute inset-0 rounded-full bg-primary blur-xl opacity-50 -z-10" />
-                )}
               </button>
             ))}
           </div>
         </FadeIn>
 
-        {/* projects carousel */}
-
+        {/* Projects carousel */}
         <FadeIn delay={200}>
           <div className="relative">
             <div
@@ -156,43 +131,38 @@ const Projects = () => {
               </div>
             </div>
 
-            {/* {navigation arrows} */}
-
             {filteredProjects.length > 3 && (
               <>
                 <button
                   onClick={prevSlide}
                   disabled={currentIndex === 0}
-                  className="flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 lg:-translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10"
+                  className="flex absolute left-0 top-[45%] -translate-y-1/2 -translate-x-3 lg:-translate-x-5 items-center justify-center w-10 h-10 lg:w-11 lg:h-11 bg-white border border-[#e2dcd5] rounded-full hover:border-[#7c5cbf]/40 hover:shadow-md transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed z-10 shadow-sm"
                   aria-label="Previous Projects"
                 >
-                  <ChevronLeft className="w-6 h-6 text-white" />
+                  <ChevronLeft className="w-5 h-5 text-[#1a1628]" />
                 </button>
 
                 <button
                   onClick={nextSlide}
                   disabled={currentIndex >= filteredProjects.length - 3}
-                  className="flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 lg:translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10 "
+                  className="flex absolute right-0 top-[45%] -translate-y-1/2 translate-x-3 lg:translate-x-5 items-center justify-center w-10 h-10 lg:w-11 lg:h-11 bg-white border border-[#e2dcd5] rounded-full hover:border-[#7c5cbf]/40 hover:shadow-md transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed z-10 shadow-sm"
                   aria-label="Next Projects"
                 >
-                  <ChevronRight className="w-6 h-6 text-white" />
+                  <ChevronRight className="w-5 h-5 text-[#1a1628]" />
                 </button>
               </>
             )}
 
-            {/* {navigation dots} */}
             {filteredProjects.length > 3 && (
               <div className="flex items-center justify-center gap-2 mt-8">
-                {Array.from({
-                  length: Math.max(0, filteredProjects.length - 2),
-                }).map((_, index) => (
+                {Array.from({ length: Math.max(0, filteredProjects.length - 2) }).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => scrollToIndex(index)}
                     className={`transition-all duration-300 rounded-full ${
                       index === currentIndex
-                        ? "bg-primary w-6 h-2"
-                        : "bg-white/30 w-2 h-2 hover:bg-white/50"
+                        ? "bg-[#7c5cbf] w-6 h-2"
+                        : "bg-[#cdc5bb] w-2 h-2 hover:bg-[#7c5cbf]/50"
                     }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />

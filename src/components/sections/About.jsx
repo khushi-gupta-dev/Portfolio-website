@@ -1,197 +1,161 @@
-// import { useState } from "react";
-import { Download, Code2, Sparkles } from "lucide-react";
+import { Download, Code2, Sparkles, Zap } from "lucide-react";
 import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiMongodb,
+  SiReact, SiNextdotjs, SiTypescript,
+  SiTailwindcss, SiNodedotjs, SiMongodb,
 } from "react-icons/si";
 import { PERSONAL_INFO, ABOUT_STATS } from "../../utils/constants";
 import FadeIn from "../animations/FadeIn";
 import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
 
-const About = () => {
-  // skills
-  const skills = [
-    { name: "React.js", icon: SiReact, color: "#61DAFB" },
-    { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
-    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-    { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
-    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-    { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-  ];
+const FEATURE_CARDS = [
+  {
+    icon: Code2,
+    title: "Expertise",
+    body: "Full-stack application development, backend architecture, and secure authentication workflows.",
+    span: 2,
+  },
+  {
+    icon: Sparkles,
+    title: "Clean Code",
+    body: "Maintainable, modular code with clear structure and reusable logic.",
+    span: 1,
+  },
+  {
+    icon: Zap,
+    title: "Performance",
+    body: "Responsive interfaces and efficient API flows for a smooth user experience.",
+    span: 1,
+  },
+];
 
-  return (
-    <section id="about" className="relative py-20 bg-black overflow-hidden">
-      <RadialGradientBackground variant="about" />
+const SKILLS = [
+  { name: "React.js",     Icon: SiReact      },
+  { name: "Next.js",      Icon: SiNextdotjs  },
+  { name: "TypeScript",   Icon: SiTypescript },
+  { name: "Tailwind CSS", Icon: SiTailwindcss },
+  { name: "Node.js",      Icon: SiNodedotjs  },
+  { name: "MongoDB",      Icon: SiMongodb    },
+];
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
-          {/* Left column */}
-          <div className="flex flex-col gap-12">
-            <FadeIn delay={60}>
-              <div className="inline-flex items-center gap-2.5 px-5 py-2.5 border border-primary/30 bg-primary/10 rounded-full w-fit">
-                <Code2 className="w-4 h-4 text-primary" />
-                <span className="text-sm text-primary font-medium ">Full-Stack Developer</span>
-                <Sparkles className="w-4 h-4 text-primary" />
-              </div>
-            </FadeIn>
+const About = () => (
+  <section id="about" className="relative py-24 bg-[#ede9e4] overflow-hidden">
+    <RadialGradientBackground variant="about" />
 
-            <FadeIn delay={100}>
-              <h2 className="text-4xl lg:text-5xl font-normal text-white leading-tight">
-                Learning Fast, Building Real Products
-              </h2>
-            </FadeIn>
+    <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
-            <FadeIn delay={200}>
-              <div className="flex flex-col gap-4">
-                {PERSONAL_INFO.bio.map((paragraph, index) => (
-                  <p key={index} className="text-base text-white/70 leading-relaxed">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            </FadeIn>
+      {/* ── Top grid: bio + cards ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
 
-            <FadeIn delay={300}>
-              <div className="grid grid-cols-3 gap-8">
-                {ABOUT_STATS.map((stat, index) => (
-                  <div key={index} className="relative">
-                    <div className="absolute -left-4 top-0 w-1 h-full bg-linear-to-b from-primary via-primary/50 to-primary/20 rounded-full"></div>
-                    <div className="text-3xl font-normal text-white mb-2 font-mono">{stat.value}</div>
-                    <p className="text-sm text-white/60 leading-snug">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={400}>
-              <button
-                onClick={() => window.open(PERSONAL_INFO.resume, "_blank")}
-                className="inline-flex items-center gap-3 bg-white hover:bg-white/90 text-black rounded-full px-8 py-4 text-base font-medium w-fit group transition-all duration-300"
-              >
-                <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform duration-300" />
-                Download Resume
-              </button>
-            </FadeIn>
-          </div>
-
-          {/* Right column */}
-          <FadeIn delay={200}>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="col-span-2 relative group">
-                <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-primary-5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
-                <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full">
-                  <div className="flex items-start gap-4 ">
-                    <div className="p-3 bg-primary/10 rounded-xl w-fit mb-4">
-                      <Code2 className="w-6 h-6 text-primary" />
-                    </div>
-
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-white mb-2">Expertise</h3>
-                      <p className="text-sm text-white/70 leading-relaxed">Focused on full-stack application development, backend architecture, and secure authentication workflows.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative group">
-                <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-primary-5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
-                <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full ">
-                  <div className="p-3 bg-primary/10 rounded-xl w-fit mb-4">
-                    <Sparkles className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="text-base font-semibold text-white mb-2">Clean Code</h3>
-                  <p className="text-sm text-white/70 leading-relaxed">Writing maintainable and modular code with clear structure and reusable logic.</p>
-                </div>
-              </div>
-
-              <div className="relative group">
-                <div className="absolute-inset-0 bg-linear-to-br from-primary/10 to-primary-5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
-                <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full">
-                  <div className="p-3 bg-primary/10 rounded-xl w-fit mb-4">
-                    <Download className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="text-base font-semibold text-white mb-2">Performance</h3>
-                  <p className="text-sm text-white/70 leading-relaxed">Building responsive interfaces and efficient API flows for smooth user experience.</p>
-                </div>
-              </div>
-
-              <div className="col-span-2 relative group">
-                <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-primary-5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
-                {/* <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full">
-                  <div className="grid grid-cols-3 gap-6 text-center">
-                    <div>
-                      <div className="text-2xl font-bold text-primary mb-1">8.0</div>
-                      <div className="text-xs text-white/60">CGPA Till Sem 4</div>
-                    </div>
-                    <div>
-                
-
-                      <div className="text-2xl font-bold text-primary mb-1">5th</div>
-                      <div className="text-xs text-white/60">Current Semester</div>
-           
-          
-                    </div>
-                    <div>
-                 <div className="text-2xl font-bold text-primary mb-1">Top 10</div>
-                      <div className="text-xs text-white/60">MP State Merit (12th)</div>
-                    </div>
-                  </div>
-                </div> */}
-              </div>
-            </div> 
+        {/* Left — bio */}
+        <div className="flex flex-col gap-8">
+          <FadeIn delay={0}>
+            <div className="section-badge w-fit">
+              <Code2 className="w-3.5 h-3.5" />
+              Full-Stack Developer
+              <Sparkles className="w-3.5 h-3.5 opacity-70" />
+            </div>
           </FadeIn>
-       
-        </div >
-        
 
-        {/* {skills grid section } */}
+          <FadeIn delay={60}>
+            <h2 className="text-heading">
+              Learning fast,<br />building real products.
+            </h2>
+          </FadeIn>
 
-        <FadeIn delay={500}>
-          <div className="flex flex-col items-center gap-8">
-            <div className="text-center">
-              <h3 className="text-2xl font-normal text-white mb-2">
-                Tech Stack & Expertise
-              </h3>
-              <p className="text-sm text-white/60">
-                Tools and technologies I use to build practical full-stack projects
-              </p>
-            </div>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 w-full max-w-4xl">
-              {skills.map((skill, index) => (
-                <div
-                  key={index}
-                  className="group relative bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 rounded-2xl p-6 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:scale-105"
-                >
-                  <skill.icon className="text-3xl text-primary"  />
-                  <div className="text-sm text-white/80 font-medium text-center">
-                    {skill.name}
-                  </div>
-               
-
-                  {/* hover glow effect  */}
-                  <div className="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 group-hover:from-primary/10 group-hover:to-primary/10 rounded-2xl transition-all duration-300 "></div>
-                </div>
-
+          <FadeIn delay={120}>
+            <div className="flex flex-col gap-4">
+              {PERSONAL_INFO.bio.map((p, i) => (
+                <p key={i} className="text-body">{p}</p>
               ))}
-              
-              
             </div>
+          </FadeIn>
+
+          {/* Stats */}
+          <FadeIn delay={180}>
+            <div className="grid grid-cols-3 gap-6 pt-2">
+              {ABOUT_STATS.map((stat, i) => (
+                <div key={i} className="relative pl-4">
+                  <div className="absolute left-0 top-0 h-full w-[3px] rounded-full bg-gradient-to-b from-[#7c5cbf] to-[#7c5cbf]/15" />
+                  <div
+                    className="text-[1.875rem] font-bold leading-none mb-1"
+                    style={{ fontFamily: "'Urbanist', sans-serif", color: "#1a1628", letterSpacing: "-0.04em" }}
+                  >
+                    {stat.value}
+                  </div>
+                  <p
+                    className="text-xs font-medium leading-snug"
+                    style={{ fontFamily: "'Inter', sans-serif", color: "#6b6375" }}
+                  >
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={240}>
+            <button
+              onClick={() => window.open(PERSONAL_INFO.resume, "_blank")}
+              className="btn-primary w-fit"
+            >
+              <Download className="w-4 h-4" />
+              Download Resume
+            </button>
+          </FadeIn>
+        </div>
+
+        {/* Right — feature cards */}
+        <FadeIn delay={160}>
+          <div className="grid grid-cols-2 gap-4">
+            {FEATURE_CARDS.map(({ icon: Icon, title, body, span }) => (
+              <div
+                key={title}
+                className="card p-6"
+                style={{ gridColumn: span === 2 ? "span 2" : undefined, borderRadius: "1rem" }}
+              >
+                <div className="icon-badge mb-4">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <h3 className="text-card-title mb-2">{title}</h3>
+                <p
+                  style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.875rem", color: "#6b6375", lineHeight: 1.7 }}
+                >
+                  {body}
+                </p>
+              </div>
+            ))}
           </div>
         </FadeIn>
-            
+      </div>
 
-               
+      {/* ── Tech stack grid ── */}
+      <FadeIn delay={300}>
+        <div className="text-center mb-8">
+          <h3 className="text-subheading mb-2">Tech Stack &amp; Expertise</h3>
+          <p className="text-body text-sm">
+            Tools and technologies I use to build practical full-stack projects
+          </p>
+        </div>
 
-      </div >
-    </section >
-   
-
-  );
-};
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-3 max-w-3xl mx-auto">
+          {SKILLS.map(({ name, Icon }) => (
+            <div
+              key={name}
+              className="card flex flex-col items-center justify-center gap-2.5 py-5 px-3 cursor-default hover:scale-105 transition-transform duration-200"
+              style={{ borderRadius: "0.875rem" }}
+            >
+              <Icon className="text-[1.625rem] text-[#7c5cbf]" />
+              <span
+                style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", fontWeight: 600, color: "#4a4358" }}
+              >
+                {name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+);
 
 export default About;

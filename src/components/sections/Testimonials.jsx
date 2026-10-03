@@ -1,143 +1,129 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { testimonials } from "../../data/testimonials";
 import FadeIn from "../animations/FadeIn";
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const scrollContainerRef = useRef(null);
 
   const scrollToIndex = (index) => {
     setCurrentIndex(index);
     if (scrollContainerRef.current) {
       const cardWidth = scrollContainerRef.current.offsetWidth;
-      scrollContainerRef.current.scrollTo({
-        left: index * cardWidth,
-        behavior: "smooth",
-      });
+      scrollContainerRef.current.scrollTo({ left: index * cardWidth, behavior: "smooth" });
     }
   };
 
-  const nextTestimonial = () => {
-    const newIndex = (currentIndex + 1) % testimonials.length;
-    scrollToIndex(newIndex);
-  };
+  const next = () => scrollToIndex((currentIndex + 1) % testimonials.length);
+  const prev = () => scrollToIndex((currentIndex - 1 + testimonials.length) % testimonials.length);
 
-  const prevTestimonial = () => {
-    const newIndex =
-      (currentIndex - 1 + testimonials.length) % testimonials.length;
-    scrollToIndex(newIndex);
-  };
-
-  const testimonialStats = [
+  const stats = [
     { value: "National", label: "Hackathon Exposure" },
-    { value: "2", label: "Scholarships" },
-    { value: "Top 10", label: "MP Merit (12th)" },
-    { value: "1", label: "NPM Package Published" },
+    { value: "2",        label: "Scholarships" },
+    { value: "Top 10",   label: "MP Merit (12th)" },
+    { value: "1",        label: "NPM Package Published" },
   ];
 
   return (
-    <section
-      id="testimonials"
-      className="relative py-20 bg-black overflow-hidden"
-    >
-      <div className=" absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-96 h-96 bg-primary/10 opacity-90 rounded-full blur-3xl " />
+    <section id="testimonials" className="relative py-24 bg-[#ede9e4] overflow-hidden">
+      {/* bg blob */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7c5cbf]/06 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8">
+
+        {/* Section header */}
         <FadeIn delay={0}>
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full mb-6">
-              <Quote className="w-4 h-4 text-primary" />
-              <span className="text-sm text-primary font-medium tracking-wider uppercase">
-                Testimonials
-              </span>
+          <div className="text-center mb-14">
+            <div className="section-badge mb-5 mx-auto w-fit">
+              <Quote className="w-3.5 h-3.5" />
+              Testimonials
             </div>
-
-            <h2 className="text-4xl lg:text-5xl font-normal text-white mb-4 max-w-xl mx-auto ">
-              Achievements & Highlights
-            </h2>
-
-            <p className="text-lg text-white/60 max-w-xl mx-auto">
-              A quick snapshot of academics, hackathon participation,
-              scholarships, and leadership journey.
+            <h2 className="text-heading mb-4">Achievements &amp; Highlights</h2>
+            <p className="text-body max-w-lg mx-auto">
+              A snapshot of academics, hackathon participation, scholarships,
+              and my leadership journey.
             </p>
           </div>
         </FadeIn>
 
+        {/* Carousel */}
         <FadeIn delay={100}>
-          <div className="relative ">
+          <div className="relative">
             <div
               ref={scrollContainerRef}
               className="overflow-x-hidden scroll-smooth"
               style={{ scrollSnapType: "x mandatory" }}
             >
-              <div className="flex ">
-                {testimonials.map((testimonial, index) => (
+              <div className="flex">
+                {testimonials.map((t, index) => (
                   <div
-                    key={testimonial.id}
-                    className="w-full shrink-0 px-4"
+                    key={t.id}
+                    className="w-full shrink-0"
                     style={{ scrollSnapAlign: "start" }}
                   >
-                    <div className="max-w-4xl mx-auto">
-                      <div className="flex flex-col md:flex-row gap-6 items-stretch">
-                        {/* {image section} */}
-                        <div className="relative w-full md:w-1/3">
-                          <div className="relative h-72 rounded-2xl overflow-hidden">
-                            <img
-                              src={testimonial.image}
-                              alt={testimonial.name}
-                              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                            />
+                    <div className="flex flex-col md:flex-row gap-6 items-stretch">
 
-                            {/* {stat badge overlay} */}
-                            <div className="absolute bottom-4 left-4 right-4">
-                              <div className="bg-black/60 rounded-xl p-4 shadow-lg">
-                                <div className="">
-                                  <div className="text-2xl font-semibold text-primary mb-1">
-                                    {testimonialStats[index]?.value}
-                                  </div>
-
-                                  <div className="text-sm font-semibold text-gray-100">
-                                    {testimonialStats[index]?.label}
-                                  </div>
-                                </div>
-                              </div>
+                      {/* ── Photo — NO overlay ── */}
+                      <div className="w-full md:w-72 shrink-0">
+                        <div className="relative rounded-2xl overflow-hidden h-72 md:h-full" style={{ minHeight: "260px" }}>
+                          <img
+                            src={t.image}
+                            alt={t.name}
+                            className="w-full h-full object-cover"
+                          />
+                          {/* Stat badge: plain white, solid — no blur/glass */}
+                          <div
+                            className="absolute bottom-4 left-4 right-4 rounded-xl p-4"
+                            style={{
+                              background: "#ffffff",
+                              border: "1px solid #e2dcd5",
+                              boxShadow: "0 2px 10px rgba(0,0,0,0.12)",
+                            }}
+                          >
+                            <div
+                              className="text-2xl font-bold mb-0.5"
+                              style={{ fontFamily: "'Urbanist', sans-serif", color: "#7c5cbf", letterSpacing: "-0.03em" }}
+                            >
+                              {stats[index]?.value}
+                            </div>
+                            <div
+                              className="text-xs font-semibold"
+                              style={{ fontFamily: "'Inter', sans-serif", color: "#4a4358" }}
+                            >
+                              {stats[index]?.label}
                             </div>
                           </div>
                         </div>
+                      </div>
 
-                        <div className="flex-1 flex flex-col justify-between ">
-                          {/* {Quote } */}
+                      {/* ── Quote card ── */}
+                      <div className="flex-1 card p-8 flex flex-col justify-between" style={{ borderRadius: "1.25rem" }}>
+                        <div className="mb-6">
+                          <Quote className="w-8 h-8 text-[#7c5cbf] mb-5 opacity-30" />
+                          <p
+                            className="leading-relaxed text-[#1a1628]"
+                            style={{ fontFamily: "'Inter', sans-serif", fontSize: "1.0625rem", lineHeight: 1.75 }}
+                          >
+                            {t.quote}
+                          </p>
+                        </div>
 
-                          <div className="mb-6">
-                            <Quote className="w-7 h-7 text-primary mb-4 opacity-50" />
-                            <p className="text-lg md:text-xl text-white leading-relaxed">
-                              {testimonial.quote}
+                        <div className="flex items-center justify-between pt-5 border-t border-[#e2dcd5]">
+                          <div>
+                            <p className="font-semibold text-[#1a1628] text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>
+                              {t.name}
+                            </p>
+                            <p className="text-xs text-[#6b6375] mt-0.5" style={{ fontFamily: "'Inter', sans-serif" }}>
+                              {t.role}, {t.company}
                             </p>
                           </div>
-
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <div className="text-white font-medium mb-1">
-                                {testimonial.name}
-                              </div>
-
-                              <div className="text-white/60 text-sm">
-                                {testimonial.role} , {testimonial.company}
-                              </div>
-                            </div>
-
-                            <div className="flex gap-1">
-                              {[...Array(testimonial.rating)].map((_, i) => (
-                                <Star
-                                  key={i}
-                                  className="w-4 h-4 fill-primary text-primary"
-                                />
-                              ))}
-                            </div>
+                          <div className="flex gap-0.5">
+                            {[...Array(t.rating)].map((_, i) => (
+                              <Star key={i} className="w-3.5 h-3.5 fill-[#7c5cbf] text-[#7c5cbf]" />
+                            ))}
                           </div>
                         </div>
                       </div>
@@ -147,35 +133,34 @@ const Testimonials = () => {
               </div>
             </div>
 
-            <div className="flex justify-center  items-center gap-2 mt-10">
-              {testimonials.map((_, index) => (
+            {/* Dots */}
+            <div className="flex justify-center gap-2 mt-8">
+              {testimonials.map((_, i) => (
                 <button
-                  key={index}
-                  onClick={() => scrollToIndex(index)}
-                  className={`transition-all duration-300 rounded-full ${
-                    index === currentIndex
-                      ? "bg-white w-6 h-2"
-                      : "bg-white/30 w-2 h-2 hover:bg-white/50"
+                  key={i}
+                  onClick={() => scrollToIndex(i)}
+                  className={`rounded-full transition-all duration-300 ${
+                    i === currentIndex ? "bg-[#7c5cbf] w-6 h-2" : "bg-[#cdc5bb] w-2 h-2 hover:bg-[#7c5cbf]/50"
                   }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
+                  aria-label={`Slide ${i + 1}`}
                 />
               ))}
             </div>
 
+            {/* Nav arrows */}
             <button
-              onClick={prevTestimonial}
-              className="flex absolute left-0 top-1/2 -translate-y-1/2  -translate-x-1/2 lg:-translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300  z-10"
-              aria-label="Previous Testimonial"
+              onClick={prev}
+              className="absolute top-[46%] -left-5 lg:-left-6 -translate-y-1/2 flex items-center justify-center w-10 h-10 rounded-full border border-[#e2dcd5] bg-white hover:border-[#7c5cbf]/35 hover:shadow-md transition-all duration-250 shadow-sm"
+              aria-label="Prev testimonial"
             >
-              <ChevronLeft className="w-6 h-6 text-white" />
+              <ChevronLeft className="w-4 h-4 text-[#4a4358]" />
             </button>
-
             <button
-              onClick={nextTestimonial}
-              className="flex absolute right-0 top-1/2 -translate-y-1/2  -translate-x-1/2 lg:-translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300  z-10"
-              aria-label="Next Testimonial"
+              onClick={next}
+              className="absolute top-[46%] -right-5 lg:-right-6 -translate-y-1/2 flex items-center justify-center w-10 h-10 rounded-full border border-[#e2dcd5] bg-white hover:border-[#7c5cbf]/35 hover:shadow-md transition-all duration-250 shadow-sm"
+              aria-label="Next testimonial"
             >
-              <ChevronRight className="w-6 h-6 text-white" />
+              <ChevronRight className="w-4 h-4 text-[#4a4358]" />
             </button>
           </div>
         </FadeIn>

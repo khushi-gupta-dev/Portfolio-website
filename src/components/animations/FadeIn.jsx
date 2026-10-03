@@ -20,14 +20,11 @@ const FadeIn = ({ children, delay = 0, duration = 500, threshold = 0.1 }) => {
             }
         );
 
-        if (elementref.current) {
-            observer.observe(elementref.current);
-        }
+        const element = elementref.current;
+        if (element) observer.observe(element);
 
         return () => {
-            if (elementref.current) {
-                observer.unobserve(elementref.current);
-            }
+            if (element) observer.unobserve(element);
         };
     }, [threshold, isVisible]);
 
